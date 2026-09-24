@@ -70,7 +70,6 @@ body{
 .details{min-width:0}
 @media (min-width:900px){
   .wrap{grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:26px}
-  .stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
 }
 
 /* ---------------- stage ---------------- */
@@ -84,7 +83,8 @@ body{
   .stage{aspect-ratio:16/10;max-height:min(46svh,420px)}
 }
 @media (min-width:900px){
-  .stage{aspect-ratio:4/5;max-height:min(76svh,640px);min-height:400px}
+  .stage{aspect-ratio:4/5;max-height:min(76svh,640px);min-height:400px;
+    position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
 }
 @media (orientation:landscape) and (max-height:560px){
   .stage{aspect-ratio:auto;height:min(64svh,300px);max-height:none;min-height:180px}
