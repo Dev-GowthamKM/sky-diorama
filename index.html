@@ -720,8 +720,10 @@ function clockIn(tz,withDate){
     return new Date().toLocaleTimeString([], Object.assign({hour:"numeric",minute:"2-digit"}, tz?{timeZone:tz}:{}));
   }catch(e){ return new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}); }
 }
-function hhmm(iso,tz){
-  try{ return new Date(iso).toLocaleTimeString([], {hour:"numeric",minute:"2-digit",timeZone:tz}); }
+/* Open-Meteo times are already the place's wall-clock time, with no offset.
+   Read them as UTC and print them as UTC so the viewer's own zone never shifts them. */
+function hhmm(iso){
+  try{ return new Date(iso+"Z").toLocaleTimeString([], {hour:"numeric",minute:"2-digit",timeZone:"UTC"}); }
   catch(e){ return "--"; }
 }
 
@@ -742,7 +744,7 @@ function render(d){
     ["Wind "+speedUnit(), d.wind!=null?speed(d.wind)+(d.dirTxt?" "+d.dirTxt:""):null],
     ["Gusts "+speedUnit(), d.gusts!=null?String(speed(d.gusts)):null],
     ["Rain chance", d.pop!=null?Math.round(d.pop)+"%":null],
-    ["UV index", d.uv!=null?Math.round(d.uv*10)/10+" \u00b7 "+(d.uvWordAW||uvWord(d.uv)):null],
+    ["UV \u00b7 "+(d.uv!=null?(d.uvWordAW||uvWord(d.uv)):""), d.uv!=null?String(Math.round(d.uv*10)/10):null],
     ["Sunrise", d.sunrise],
     ["Sunset", d.sunset],
     ["Visibility", d.visibility!=null?dist(d.visibility):null],
@@ -903,11 +905,11 @@ function shapeOM(j,name){
   let i0=times.findIndex(t=>t>=cur.time); if(i0<0) i0=0;
   const hours=[];
   for(let i=i0;i<Math.min(i0+24,times.length);i++)
-    hours.push({label:hhmm(times[i],tz).replace(/:00/,"").replace(/\s/,""),
+    hours.push({label:hhmm(times[i]).replace(/:00/,"").replace(/\s/,""),
       t:j.hourly.temperature_2m[i], kind:codeToKind(j.hourly.weather_code[i]),
       night:j.hourly.is_day&&j.hourly.is_day[i]===0, pop:j.hourly.precipitation_probability?j.hourly.precipitation_probability[i]:null});
   const days=j.daily.time.map((t,i)=>({
-    label:new Date(t+"T12:00:00").toLocaleDateString([], {weekday:"short",timeZone:tz}),
+    label:new Date(t+"T12:00:00Z").toLocaleDateString([], {weekday:"short",timeZone:"UTC"}),
     min:j.daily.temperature_2m_min[i], max:j.daily.temperature_2m_max[i],
     kind:codeToKind(j.daily.weather_code[i])}));
   const dir=cur.wind_direction_10m;
@@ -917,7 +919,7 @@ function shapeOM(j,name){
     pressure:cur.surface_pressure, visibility:cur.visibility!=null?cur.visibility/1000:null,
     uv:j.daily.uv_index_max&&j.daily.uv_index_max[0], air:null, gusts:null, dew:null,
     pop:hours.length?hours[0].pop:0,
-    sunrise:hhmm(j.daily.sunrise[0],tz), sunset:hhmm(j.daily.sunset[0],tz), alert:null,
+    sunrise:hhmm(j.daily.sunrise[0]), sunset:hhmm(j.daily.sunset[0]), alert:null,
     kind:codeToKind(cur.weather_code), text:CODE_TEXT[cur.weather_code]||LABEL[codeToKind(cur.weather_code)],
     night:cur.is_day===0, hours, days};
 }
