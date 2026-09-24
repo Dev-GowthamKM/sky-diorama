@@ -7,6 +7,8 @@ lightning, birds, and an aircraft crossing now and then.
 
 **Live:** https://Dev-GowthamKM.github.io/sky-diorama/
 
+[![Sky Diorama on a laptop and a phone](docs/preview.png)](https://dev-gowthamkm.github.io/sky-diorama/)
+
 
 ## What it does
 
