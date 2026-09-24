@@ -1,5 +1,7 @@
 # Sky Diorama
 
+**Made by [Gowtham KM](https://github.com/Dev-GowthamKM).**
+
 A weather app where the forecast is a scene you watch rather than a dashboard you read.
 Search any city in the world and the sky, hills, light and weather redraw themselves —
 a sun that blinks at you, drifting clouds, rain that puddles, fog on the hillside,
@@ -78,6 +80,14 @@ Plain HTML, CSS and JavaScript. No framework, no bundler.
 Current Chrome, Safari, Firefox and Edge. Uses container queries, `ResizeObserver`
 and the Web Animations API.
 
+## Author
+
+Created by **Gowtham KM** — [github.com/Dev-GowthamKM](https://github.com/Dev-GowthamKM).
+
+If you use, copy or fork this project, please credit Gowtham KM and link back to
+this repository.
+
 ## Licence
 
-MIT — see [LICENSE](LICENSE).
+MIT © 2026 Gowtham KM — see [LICENSE](LICENSE). You're free to use and modify it,
+but the copyright notice and licence must be kept in every copy.

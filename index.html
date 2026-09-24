@@ -1,8 +1,16 @@
 <!DOCTYPE html>
+<!--
+  Sky Diorama — weather you can watch
+  Made by Gowtham KM · https://github.com/Dev-GowthamKM/sky-diorama
+  Copyright (c) 2026 Gowtham KM. Released under the MIT License:
+  you may copy and change this file, but this notice must stay in every copy.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="author" content="Gowtham KM">
+<meta name="description" content="Sky Diorama by Gowtham KM: an animated weather app where the forecast is a living sky scene.">
 <title>Sky Diorama — weather you can watch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -201,6 +209,9 @@ h2{font-size:15px;font-weight:800;margin:22px 0 9px}
 
 .note{margin:18px 0 0;font-size:12.5px;line-height:1.6;color:var(--ink-soft)}
 .note b{color:var(--ink)}
+.credit{margin:28px var(--gap) 0;padding-top:14px;border-top:3px dashed rgba(127,127,127,.35);
+  text-align:center;font-size:13px;font-weight:700;color:var(--ink-soft)}
+.credit a{color:var(--ink);text-decoration-thickness:2px;text-underline-offset:3px}
 .loading .temp,.loading .strips{opacity:.5}
 
 /* ---------------- motion ---------------- */
@@ -395,6 +406,11 @@ h2{font-size:15px;font-weight:800;margin:22px 0 9px}
       <p class="note" id="note"></p>
     </div>
   </main>
+  <footer class="credit">
+    Made by <a href="https://github.com/Dev-GowthamKM" rel="author">Gowtham KM</a> ·
+    <a href="https://github.com/Dev-GowthamKM/sky-diorama">Source on GitHub</a> ·
+    Weather by <a href="https://open-meteo.com">Open-Meteo</a>
+  </footer>
 </div>
 
 <script>
