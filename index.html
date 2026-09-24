@@ -124,7 +124,7 @@ body{
 .restore[hidden]{display:none}
 .restore:active{transform:translateY(3px);box-shadow:0 0 0 var(--edge)}
 #cloudNear1,#cloudNear2,#cloudFar1,#cloudFar2{cursor:pointer}
-#navlight{animation:beacon 1.6s steps(1,end) infinite}
+#navlight circle{animation:beacon 1.6s steps(1,end) infinite}
 @keyframes beacon{0%,42%{opacity:0}46%,52%{opacity:1}56%,100%{opacity:0}}
 
 /* ---------------- details ---------------- */
@@ -226,7 +226,7 @@ h2{font-size:15px;font-weight:800;margin:22px 0 9px}
 #fogbank g{animation:sway 9s ease-in-out infinite}
 #fogbank g:nth-child(2){animation-duration:13s;animation-delay:-3s}
 #fogbank g:nth-child(3){animation-duration:11s;animation-delay:-6s}
-#bolt,#flashfill{animation:flash 5.5s linear infinite}
+#bolt>path,#flashfill{animation:flash 5.5s linear infinite}
 .star{animation:twinkle 3.4s ease-in-out infinite}
 .rip{animation:ripple 2.4s ease-out infinite}
 #birds g{animation:drift 34s linear infinite}
@@ -333,7 +333,7 @@ h2{font-size:15px;font-weight:800;margin:22px 0 9px}
             <path d="M24 13l11 14h-8l-12-14z" fill="#e6eef6" stroke="var(--edge)" stroke-width="3.4" stroke-linejoin="round"/>
             <circle cx="41" cy="9" r="2.6" fill="var(--edge)"/>
           </g>
-          <circle id="navlight" cx="2" cy="12" r="2.6" fill="#ff5d5d" opacity="0"/>
+          <g id="navlight" opacity="0"><circle cx="2" cy="12" r="2.6" fill="#ff5d5d"/></g>
         </g>
         <g id="birds" opacity="0" stroke="var(--edge)" stroke-width="2.6" fill="none" stroke-linecap="round">
           <g><path d="M0 58 q7,-6 14,0 q7,-6 14,0"/><path d="M34 80 q5,-5 10,0 q5,-5 10,0"/></g>
